@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__web-reader__webReader",
+      "Bash(chmod:*)",
+      "Bash(tree:*)"
+    ]
+  }
+}
