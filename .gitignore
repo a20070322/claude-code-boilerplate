@@ -1,0 +1,15 @@
+# Claude Code 本地配置
+.claude/settings.local.json
+**/.claude/settings.local.json
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# 日志
+*.log
+
+# 临时文件
+*.tmp
+.DS_Store
