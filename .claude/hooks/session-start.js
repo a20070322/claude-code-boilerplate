@@ -52,8 +52,10 @@ try {
 ${uncommittedChanges.map(f => `  ${f}`).join('\n')}` : ''}${todoInfo}
 
 💡 **快捷命令**:
-| /dev  | 开发新功能 (7步流程) |
-| /plan | 创建实现计划 |
+| /doc      | 文档维护 (readme/check) |
+| /template | 模板管理 (create/validate) |
+| /check    | 配置检查 |
+| /explore  | 项目探索 |
 `;
 
   console.log(output);

@@ -20,11 +20,10 @@ if (isSlashCommand) {
 
 // 定义可用技能列表 (根据项目需要自定义)
 const skills = [
-  'code-patterns',
-  'error-handler',
-  'security-guard',
-  'performance-doctor',
-  'bug-detective'
+  'doc-development',
+  'template-dev',
+  'config-validator',
+  'project-explorer'
 ];
 
 // 检查是否有自定义技能配置

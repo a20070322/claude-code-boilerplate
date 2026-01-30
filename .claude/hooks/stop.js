@@ -30,22 +30,21 @@ try {
   let suggestions = [];
 
   if (changes.length > 0) {
-    const hasSourceCode = changes.some(f =>
-      f.match(/\.(js|ts|jsx|tsx|py|java|go|rs|vue|css|scss)$/i)
-    );
-    const hasConfig = changes.some(f =>
-      f.match(/(package\.json|tsconfig|webpack|vite|tailwind)/i)
-    );
+    const hasClaudeConfig = changes.some(f => f.includes('.claude/'));
+    const hasDocs = changes.some(f => f.match(/\.md$/i));
+    const hasHooks = changes.some(f => f.includes('/hooks/'));
 
-    if (hasSourceCode) {
-      suggestions.push('• 检查代码是否符合规范');
-      suggestions.push('• 运行测试验证功能');
+    if (hasClaudeConfig) {
+      suggestions.push('• 配置文件已变更,建议使用 `check` 验证');
     }
-    if (hasConfig) {
-      suggestions.push('• 配置文件已变更,可能需要重新安装依赖');
+    if (hasDocs) {
+      suggestions.push('• 文档已更新,建议检查链接和格式');
+    }
+    if (hasHooks) {
+      suggestions.push('• Hook 脚本已变更,确保有执行权限 (chmod +x)');
     }
 
-    suggestions.push('• 使用 `git add . && git commit -m "feat: xxx"` 提交代码');
+    suggestions.push('• 使用 `git add . && git commit -m "xxx"` 提交代码');
   }
 
   // 构建输出
