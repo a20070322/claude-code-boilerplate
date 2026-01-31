@@ -1,0 +1,31 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "path": "hooks/session-start.mjs"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "path": "hooks/user-prompt-submit.mjs"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "path": "hooks/pre-tool-use.mjs"
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "path": "hooks/stop.mjs"
+      }
+    ]
+  },
+  "permissions": {
+    "allow": ["*"]
+  }
+}

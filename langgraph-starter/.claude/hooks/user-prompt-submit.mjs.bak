@@ -39,11 +39,39 @@ export async function userPromptSubmit(context) {
     prompt.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  // 如果涉及 LangGraph 开发，自动激活相关技能（不阻止执行）
+  // 如果涉及 LangGraph 开发，强制技能评估
   if (hasLanggraphKeyword) {
-    // 自动激活技能，不要求用户确认
-    // AI 会根据上下文自动选择合适的技能
-    console.log('\n💡 检测到 LangGraph 相关任务，AI 将自动使用相关技能');
+    return {
+      proceed: false,
+      message: `
+## 指令:强制技能激活流程
+
+### 步骤 1 - 技能评估
+针对以下技能，请评估是否适用：
+
+**基础图结构技能** (langgraph-basic)
+- 是否涉及：StateGraph、节点定义、边连接
+
+**ReAct 模式技能** (langgraph-react)
+- 是否涉及：ReAct 循环、工具调用、多步推理
+
+**Agent 模式技能** (langgraph-agent)
+- 是否涉及：Agent 实现、工具绑定、决策循环
+
+**多 Agent 系统技能** (langgraph-multi-agent)
+- 是否涉及：多个 Agent、Agent 协作、子图
+
+**状态管理技能** (langgraph-state)
+- 是否涉及：状态定义、状态更新、状态传递
+
+### 步骤 2 - 激活
+如果任何技能为"是" → 立即激活对应技能
+如果所有技能为"否" → 说明"无需 LangGraph 技能"并继续
+
+### 步骤 3 - 实施任务
+只有在步骤 2 完成后，才能开始实现。
+      `
+    };
   }
 
   // 其他任务直接放行

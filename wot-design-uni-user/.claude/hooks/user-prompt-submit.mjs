@@ -46,39 +46,11 @@ export async function userPromptSubmit(context) {
     prompt.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  // 如果涉及组件使用，强制技能评估
+  // 如果涉及组件使用，自动激活相关技能（不阻止执行）
   if (hasComponentKeyword) {
-    return {
-      proceed: false,
-      message: `
-## 指令:强制技能激活流程
-
-### 步骤 1 - 技能评估
-针对以下技能，请评估是否适用：
-
-**基础组件技能** (usage-basic-component)
-- 是否涉及：按钮、图标、头像、徽标、标签等基础组件
-
-**表单组件技能** (usage-form-component)
-- 是否涉及：输入框、表单、选择器、上传、评分等表单组件
-
-**反馈组件技能** (usage-feedback-component)
-- 是否涉及：弹窗、提示、加载、通知等反馈组件
-
-**布局组件技能** (usage-layout-component)
-- 是否涉及：布局容器、分隔线、卡片、折叠等布局组件
-
-**导航组件技能** (usage-navigation-component)
-- 是否涉及：标签页、导航栏、侧边栏等导航组件
-
-### 步骤 2 - 技能激活
-如果任何技能为"是" → 立即使用 Skill 工具激活对应技能
-如果所有技能为"否" → 说明"无需组件技能"并继续
-
-### 步骤 3 - 实施任务
-只有在步骤 2 完成后，才能开始实施。
-      `
-    };
+    // 自动激活技能，不要求用户确认
+    // AI 会根据上下文自动选择合适的技能
+    console.log('\n💡 检测到组件使用任务，AI 将自动使用相关技能');
   }
 
   // 其他任务直接放行
