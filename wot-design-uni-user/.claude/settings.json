@@ -1,0 +1,61 @@
+{
+  "singleFileRequestLimit": 100,
+  "contextPadding": 256,
+  "mcpServers": {},
+  "hooks": [
+    {
+      "type": "session-start",
+      "path": "hooks/session-start.mjs"
+    },
+    {
+      "type": "user-prompt-submit",
+      "path": "hooks/user-prompt-submit.mjs"
+    },
+    {
+      "type": "stop",
+      "path": "hooks/stop.mjs"
+    }
+  ],
+  "skills": [
+    {
+      "name": "usage-basic-component",
+      "path": "skills/usage/basic-component"
+    },
+    {
+      "name": "usage-form-component",
+      "path": "skills/usage/form-component"
+    },
+    {
+      "name": "usage-feedback-component",
+      "path": "skills/usage/feedback-component"
+    },
+    {
+      "name": "usage-layout-component",
+      "path": "skills/usage/layout-component"
+    },
+    {
+      "name": "usage-navigation-component",
+      "path": "skills/usage/navigation-component"
+    }
+  ],
+  "commands": [
+    {
+      "name": "use-component",
+      "path": "commands/use-component.md"
+    },
+    {
+      "name": "theme-config",
+      "path": "commands/theme-config.md"
+    },
+    {
+      "name": "check-usage",
+      "path": "commands/check-usage.md"
+    }
+  ],
+  "agents": [
+    {
+      "name": "component-helper",
+      "path": "agents/component-helper"
+    }
+  ]
+}

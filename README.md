@@ -26,6 +26,14 @@ cp -r .claude /path/to/your/project/
 
 **适用场景**：任何需要规范化开发的软件项目
 
+**使用方法**：
+```bash
+# 复制根目录的 .claude 文件夹到你的项目
+cp -r .claude /path/to/your/project/
+```
+
+**适用场景**：任何需要规范化开发的软件项目
+
 ### RuoYi-Plus-示例
 
 RuoYi-Plus 框架专用配置，适合使用 RuoYi Plus 框架的 Java 后端项目。
@@ -37,6 +45,31 @@ RuoYi-Plus 框架专用配置，适合使用 RuoYi Plus 框架的 Java 后端项
 - 2 个代理（代码审查、项目管理）
 
 **技术栈**：Spring Boot 3.x + MyBatis-Plus + Vue 3 + Element Plus
+
+**特点**：
+- 强制技能评估机制
+- 四层架构规范
+- 完整的 CRUD 开发流程
+
+### Wot-Starter-前端示例
+
+Wot Starter 框架专用配置，适合使用 wot-design-uni 的 uni-app 前端项目。
+
+**包含内容**：
+- 4 个生命周期钩子
+- 6 个专业技能（页面生成、API模块、状态管理、路由导航、全局反馈、组合式函数）
+- 5 个斜杠命令（`/page`、`/api`、`/store`、`/component`、`/check`）
+- 2 个代理（代码审查、项目管理）
+
+**技术栈**：uni-app + Vue 3.4 + TypeScript + wot-design-uni + UnoCSS
+
+**特点**：
+- 强制技能评估机制
+- 三层架构规范
+- 多端开发支持 (H5/小程序/App)
+- 完整的前端开发流程
+
+**适用场景**：uni-app 多端开发项目
 
 ### hook-示例
 
@@ -78,11 +111,35 @@ cp -r RuoYi-Plus-示例/.claude /path/to/your/project/
 
 ### 创建新模板
 
-基于现有模板创建新的工作空间：
+#### 方法1: 使用 /create-config 命令 (推荐)
+
+```
+/create-config 为 React + TypeScript 项目创建配置
+/create-config 为 Python + FastAPI 项目创建配置
+```
+
+这个命令会：
+- 分析技术栈特点
+- 设计核心技能和命令
+- 生成完整的配置文件
+- 提供测试验证步骤
+
+#### 方法2: 基于现有模板
 
 1. 复制任意模板目录
 2. 修改 `.claude` 配置文件
 3. 更新文档说明
+
+#### 方法3: 从零创建
+
+参考 `.claude/skills/claude-config-creator/SKILL.md` 中的完整指南，了解：
+- 配置架构设计
+- 技能设计原则
+- 命令设计方法
+- 钩子实现技巧
+- 文档编写规范
+
+包含 RuoYi-Plus 和 Wot Starter 的成功案例分析。
 
 ## 模板规范
 
