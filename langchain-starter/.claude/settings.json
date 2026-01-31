@@ -1,0 +1,70 @@
+{
+  "inlinePreferences": {
+    "prefixesToIgnore": [],
+    "ignorePatterns": []
+  },
+  "hooks": [
+    {
+      "name": "session-start.mjs",
+      "description": "会话启动时显示快捷命令和技能"
+    },
+    {
+      "name": "user-prompt-submit.mjs",
+      "description": "强制技能评估流程"
+    },
+    {
+      "name": "stop.mjs",
+      "description": "任务完成总结"
+    }
+  ],
+  "skills": [
+    {
+      "name": "langchain-chain",
+      "description": "构建 LangChain 链"
+    },
+    {
+      "name": "langchain-agent",
+      "description": "开发 LangChain 智能体"
+    },
+    {
+      "name": "langchain-prompt",
+      "description": "创建和管理提示模板"
+    },
+    {
+      "name": "langchain-retriever",
+      "description": "实现检索器"
+    },
+    {
+      "name": "langchain-memory",
+      "description": "配置记忆组件"
+    }
+  ],
+  "commands": [
+    {
+      "name": "/chain",
+      "description": "创建 LangChain 链"
+    },
+    {
+      "name": "/agent",
+      "description": "创建 LangChain 智能体"
+    },
+    {
+      "name": "/prompt",
+      "description": "创建提示模板"
+    },
+    {
+      "name": "/retriever",
+      "description": "创建检索器"
+    },
+    {
+      "name": "/check",
+      "description": "检查配置和代码"
+    }
+  ],
+  "agents": [
+    {
+      "name": "chain-reviewer",
+      "description": "审查链的设计和实现"
+    }
+  ]
+}

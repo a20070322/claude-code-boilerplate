@@ -1,0 +1,30 @@
+# Core dependencies
+langchain>=0.2.0
+langchain-core>=0.3.0
+langchain-anthropic>=0.2.0
+python-dotenv>=1.0.0
+
+# Optional dependencies
+# Uncomment as needed
+
+# Vector stores
+# chromadb>=0.4.0
+# pinecone-client>=2.0.0
+# weaviate-client>=3.0.0
+
+# Embeddings
+# langchain-openai>=0.1.0
+# sentence-transformers>=2.0
+
+# Memory storage
+# redis>=4.0.0
+# psycopg2-binary>=2.9.0
+
+# Community integrations
+# langchain-community>=0.2.0
+
+# Development dependencies
+# pytest>=7.0.0
+# mypy>=1.0.0
+# black>=23.0.0
+# isort>=5.0.0

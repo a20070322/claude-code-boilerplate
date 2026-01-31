@@ -137,6 +137,37 @@ Wot Design Uni 组件库使用配置，专注于组件库的正确使用。
 
 ---
 
+### 🦜 LangChain Starter
+
+LangChain 应用开发配置，适合使用 LangChain 框架的 LLM 应用项目。
+
+**技术栈**：LangChain >= 0.2.0 + Python 3.9+ + Anthropic Claude
+
+**包含内容**：
+- 🔔 3 个生命周期钩子
+- 🎓 5 个专业技能
+  - 链构建 (LCEL 链、RAG 链、路由链)
+  - 智能体开发 (工具调用、ReAct、规划执行)
+  - 提示模板 (ChatPromptTemplate、少样本学习)
+  - 检索器 (向量存储、MMR、RAG)
+  - 记忆组件 (对话历史、持久化、会话管理)
+- ⚡ 5 个快捷命令（`/chain`、`/agent`、`/prompt`、`/retriever`、`/check`）
+- 🤖 1 个智能代理（@chain-reviewer）
+
+**特点**：
+- ✅ 强制技能评估机制
+- ✅ LCEL 优先原则
+- ✅ 完整的代码规范（禁止事项 + 检查清单）
+- ✅ 覆盖链、智能体、提示、检索器、记忆等核心组件
+
+**适用场景**：LangChain 应用开发、LLM 应用、RAG 系统、对话系统
+
+**相关资源**：
+- [LangChain 官方文档](https://python.langchain.com/)
+- [LCEL 指南](https://python.langchain.com/docs/expression_language/)
+
+---
+
 ### 🔧 Hook 示例
 
 Hook 配置示例，展示如何使用生命周期钩子。
@@ -329,6 +360,8 @@ if (isCodeTask(prompt)) {
 | **RuoYi-Plus** | Spring Boot + MyBatis-Plus | 4 | 3 | Java 后端 |
 | **Wot Starter** | uni-app + Vue 3 + TS | 6 | 5 | 前端开发 |
 | **Wot Design Uni User** | wot-design-uni | 5 | 3 | 组件使用 |
+| **LangChain Starter** | LangChain + Python | 5 | 5 | LLM 应用 |
+| **LangGraph Starter** | LangGraph + Python | 5 | 5 | 复杂工作流 |
 
 ## 🎓 使用建议
 
@@ -338,6 +371,8 @@ if (isCodeTask(prompt)) {
 2. **Java 后端（RuoYi-Plus）** → 使用 **RuoYi-Plus 示例**
 3. **uni-app 前端开发** → 使用 **Wot Starter 示例**
 4. **使用 wot-design-uni 组件** → 叠加 **Wot Design Uni User**
+5. **LangChain LLM 应用** → 使用 **LangChain Starter**
+6. **LangGraph 复杂工作流** → 使用 **LangGraph Starter**
 
 ### 组合使用
 
@@ -354,11 +389,11 @@ cp -r wot-design-uni-user/.claude/commands /path/to/project/.claude/
 
 ## 📈 项目统计
 
-- 📦 **配置模板**: 5 个
-- 🎓 **专业技能**: 20+ 个
-- ⚡ **快捷命令**: 10+ 个
-- 🤖 **智能代理**: 6 个
-- 📝 **文档页面**: 100+ 页
+- 📦 **配置模板**: 7 个
+- 🎓 **专业技能**: 30+ 个
+- ⚡ **快捷命令**: 15+ 个
+- 🤖 **智能代理**: 8 个
+- 📝 **文档页面**: 150+ 页
 
 ## 📜 许可证
 
