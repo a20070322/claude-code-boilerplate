@@ -1,0 +1,63 @@
+{
+  "mcpServers": {},
+  "hooks": [
+    {
+      "type": "session-start",
+      "path": "hooks/session-start.mjs"
+    },
+    {
+      "type": "user-prompt-submit",
+      "path": "hooks/user-prompt-submit.mjs"
+    },
+    {
+      "type": "stop",
+      "path": "hooks/stop.mjs"
+    }
+  ],
+  "skills": [
+    {
+      "name": "langgraph-basic",
+      "path": "skills/langgraph-basic"
+    },
+    {
+      "name": "langgraph-react",
+      "path": "skills/langgraph-react"
+    },
+    {
+      "name": "langgraph-agent",
+      "path": "skills/langgraph-agent"
+    },
+    {
+      "name": "langgraph-multi-agent",
+      "path": "skills/langgraph-multi-agent"
+    },
+    {
+      "name": "langgraph-state",
+      "path": "skills/langgraph-state"
+    }
+  ],
+  "commands": [
+    {
+      "name": "graph",
+      "path": "commands/graph.md"
+    },
+    {
+      "name": "agent",
+      "path": "commands/agent.md"
+    },
+    {
+      "name": "state",
+      "path": "commands/state.md"
+    },
+    {
+      "name": "check-graph",
+      "path": "commands/check-graph.md"
+    }
+  ],
+  "agents": [
+    {
+      "name": "graph-reviewer",
+      "path": "agents/graph-reviewer"
+    }
+  ]
+}
