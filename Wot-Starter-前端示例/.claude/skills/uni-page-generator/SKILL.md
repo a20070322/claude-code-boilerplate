@@ -1,112 +1,108 @@
 ---
 name: uni-page-generator
-description: 基于项目规范快速生成 uni-app 页面
+description: Use when creating uni-app pages in Wot Starter projects. Covers page structure, routing, layout configuration, and best practices.
+             Trigger keywords: 页面、page、uni-app、路由、definePage
 ---
 
 # uni-app 页面生成器
-
-快速创建符合 wot-starter 项目规范的 uni-app 页面。
 
 ## 使用场景
 
 - 创建主包页面 (`src/pages/`)
 - 创建分包页面 (`src/subPages/`, `src/subEcharts` 等)
-- 自动配置路由和布局
+- 配置页面路由和布局
 
-## 页面模板
+## 开发流程
 
-### 基础页面
+### 步骤 1：确定页面位置
 
+**页面位置规则**：
+- TabBar 页面 → `src/pages/{name}/index.vue`
+- 普通主包页面 → `src/pages/{name}/index.vue`
+- 分包页面 → `src/subPages/{name}/index.vue`
+
+### 步骤 2：配置 definePage 宏
+
+**基础页面配置**：
 ```vue
 <script setup lang="ts">
 definePage({
-  name: '页面名称',           // 路由 name，用于编程式导航
-  layout: 'default',         // 布局：'default' | 'tabbar'
+  name: 'page-name',        // 路由名称，用于编程式导航
+  layout: 'default',        // 布局：'default' | 'tabbar'
   style: {
     navigationBarTitleText: '页面标题',
   },
 })
-
-const router = useRouter()
 </script>
-
-<template>
-  <view class="p-3">
-    <!-- 页面内容 -->
-  </view>
-</template>
 ```
 
-### TabBar 页面
-
+**TabBar 页面配置**：
 ```vue
 <script setup lang="ts">
 definePage({
   name: 'home',
-  layout: 'tabbar',          // 使用 tabbar 布局
+  layout: 'tabbar',         // TabBar 页面必须使用 tabbar 布局
   style: {
     navigationBarTitleText: '首页',
   },
 })
 </script>
-
-<template>
-  <view class="box-border py-3">
-    <!-- TabBar 页面内容 -->
-  </view>
-</template>
 ```
 
-## 目录结构
+**参考示例**：[examples/page-templates.md](examples/page-templates.md)
 
-```
-src/
-├── pages/              # 主包页面（TabBar 页面）
-│   ├── index/
-│   │   └── index.vue
-│   └── about/
-│       └── index.vue
-├── subPages/           # 分包页面
-│   ├── router/
-│   ├── request/
-│   └── ...
-└── subEcharts/         # ECharts 分包
-```
+### 步骤 3：页面跳转
 
-## 创建步骤
-
-1. **确定页面位置**
-   - TabBar 页面 → `src/pages/{name}/index.vue`
-   - 普通页面 → `src/subPages/{name}/index.vue`
-
-2. **使用 definePage 宏**
-   - 配置 `name` 用于编程式导航
-   - 配置 `layout` 选择布局
-   - 配置 `style` 设置导航栏
-
-3. **页面跳转**
 ```typescript
 const router = useRouter()
 
-// 使用 name 跳转
+// ✅ 正确：使用 name 跳转
 router.push({ name: 'detail' })
 
-// 使用 path 跳转
+// ✅ 正确：使用 path 跳转
 router.push('/subPages/detail/index')
 
-// 带参数跳转
+// ✅ 正确：带参数跳转
 router.push({ name: 'detail', query: { id: '123' } })
+
+// ❌ 错误：不要使用 uni.navigateTo
+uni.navigateTo({ url: '/pages/detail/index' })
 ```
 
-## 禁止事项
+### 步骤 4：样式规范
 
-- ❌ 不要使用 `uni.navigateTo`（应该用 `useRouter()`）
-- ❌ 不要忘记配置 `definePage` 宏
-- ❌ 不要在主包页面中使用分包组件
-- ❌ 不要使用非 UnoCSS 的复杂样式
-- ❌ 不要在页面中写过多的业务逻辑（应该封装到 composable）
+```vue
+<template>
+  <!-- ✅ 正确：使用 UnoCSS 原子化样式 -->
+  <view class="p-3 flex items-center justify-center">
+    <text class="text-primary">内容</text>
+  </view>
 
-## 检查清单
+  <!-- ❌ 错误：不要使用复杂 class -->
+  <view class="custom-container">
+    <text class="custom-text">内容</text>
+  </view>
+</template>
+
+<style scoped>
+/* ❌ 禁止：不要使用 style 标签写样式 */
+.custom-container {
+  padding: 12px;
+}
+</style>
+```
+
+## 禁止事项 ⭐重要
+
+| 禁止项 | 原因 | 正确做法 |
+|--------|------|----------|
+| ❌ 使用 `uni.navigateTo` | 不符合项目路由规范 | 使用 `useRouter()` |
+| ❌ 忘记配置 `definePage` | 页面无法正常注册 | 每个页面必须配置 |
+| ❌ 使用 `<style>` 标签 | 应该用 UnoCSS | 使用原子化样式 |
+| ❌ TabBar 页面不用 tabbar 布局 | 布局错误 | 使用 `layout: 'tabbar'` |
+| ❌ 在页面中写过多业务逻辑 | 难以维护 | 封装到 composable |
+
+## 检查清单 ⭐重要
 
 - [ ] 页面文件名固定为 `index.vue`
 - [ ] 使用 `definePage` 宏配置页面
@@ -118,9 +114,64 @@ router.push({ name: 'detail', query: { id: '123' } })
 - [ ] 分包目录已在 `vite.config.ts` 中注册
 - [ ] TabBar 页面使用 `layout: 'tabbar'`
 
-## 注意事项
+## 分包配置
 
-- 分包目录需在 `vite.config.ts` 的 `subPackages` 中注册
-- 页面文件名固定为 `index.vue`
-- 使用 UnoCSS 原子化样式
-- 路由跳转使用 `useRouter()` 而不是 `uni.navigateTo()`
+### vite.config.ts 中注册分包
+
+```typescript
+export default defineConfig({
+  plugins: [
+    uni({
+      subPackages: [
+        {
+          root: 'src/subPages',
+          pages: [
+            {
+              path: 'detail/index',
+              style: {
+                navigationBarTitleText: '详情',
+              },
+            },
+          ],
+        },
+      ],
+    }),
+  ],
+})
+```
+
+## 完整示例
+
+详细的页面示例，请参考：
+- **[examples/page-templates.md](examples/page-templates.md)** - 各种页面模板
+- **[examples/routing-guide.md](examples/routing-guide.md)** - 路由使用指南
+- **[template.md](template.md)** - 页面配置表
+
+## 快速参考
+
+### definePage 配置项
+```typescript
+definePage({
+  name: 'page-name',      // 必需：路由名称
+  layout: 'default',      // 可选：default | tabbar
+  style: {
+    navigationBarTitleText: '标题',  // 导航栏标题
+    navigationBarBackgroundColor: '#fff',  // 背景色
+  },
+})
+```
+
+### 路由跳转
+```typescript
+router.push({ name: 'page-name' })
+router.push('/subPages/detail/index')
+router.push({ name: 'detail', query: { id: '123' } })
+router.replace({ name: 'home' })
+router.back()
+```
+
+### 页面位置
+```
+src/pages/{name}/index.vue     # 主包
+src/subPages/{name}/index.vue  # 分包
+```
